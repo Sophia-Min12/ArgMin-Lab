@@ -12,6 +12,7 @@
 
 ## Key ideas · 핵심 아이디어
 
+- **Hill climbing *is* greedy search**: at every step it takes whatever looks best right now — see the grid-vs-greedy study note in [Level 1](../01_foundations/README.md#-study-note--공부-노트--grid-search-vs-greedy-search). <sub>(언덕 오르기가 곧 탐욕 탐색이다 — Level 1의 공부 노트 참고)</sub>
 - **Local optimum trap**: pure hill climbing stops at the nearest peak of its valley. <sub>(순수 언덕 오르기는 가장 가까운 지역 최적점에 갇힌다)</sub>
 - **Random restarts** trade compute for coverage. <sub>(재시작은 계산량을 대가로 탐색 범위를 넓힌다)</sub>
 - **Annealing**: accept worse moves with probability `exp(−ΔF/T)`; as temperature `T` cools, the walk anneals from exploration into exploitation. <sub>(온도가 식을수록 탐험에서 활용으로 옮겨간다)</sub>
