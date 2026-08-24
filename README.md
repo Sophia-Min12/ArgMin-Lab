@@ -14,6 +14,7 @@ $$X^{\star} = \underset{X' \in \mathcal{X}}{\arg\min} F\left(X'\right)$$
 
 | Level | Stage | Topics | Status |
 |:-----:|-------|--------|:------:|
+| 0 | [`00_basics`](00_basics/) | What "arg min" means — min vs. arg min, reading the master equation<br><sub>arg min의 의미 — min과 arg min의 차이, 대표 수식 읽는 법</sub> | ✅ |
 | 1 | [`01_foundations`](01_foundations/) | Objective functions, grid/random search, gradient descent<br><sub>목적함수, 그리드/랜덤 탐색, 경사하강법</sub> | ✅ |
 | 2 | [`02_local_search`](02_local_search/) | Hill climbing, simulated annealing<br><sub>언덕 오르기, 담금질 기법</sub> | ✅ |
 | 3 | [`03_metaheuristics`](03_metaheuristics/) | Genetic algorithm, particle swarm optimization<br><sub>유전 알고리즘, 입자 군집 최적화</sub> | ✅ |
