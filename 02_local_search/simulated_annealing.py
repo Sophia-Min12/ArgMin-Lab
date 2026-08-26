@@ -1,6 +1,5 @@
 """Simulated annealing with Metropolis acceptance and geometric cooling.
 
-메트로폴리스 수용 기준과 기하 냉각을 사용하는 담금질 기법.
 Accept a worse move with probability exp(−ΔF / T).
 """
 
@@ -35,12 +34,10 @@ def simulated_annealing(
 
     Args:
         t_initial / t_final: temperature range. High T ≈ random walk,
-            low T ≈ greedy hill climbing. (높은 온도는 무작위 걷기,
-            낮은 온도는 탐욕적 언덕 오르기에 가깝다.)
-        cooling: geometric factor, T ← cooling · T each stage.
-            (기하 냉각 계수 — 1에 가까울수록 천천히 식는다.)
+            low T ≈ greedy hill climbing.
+        cooling: geometric factor, T ← cooling · T each stage; the closer
+            to 1, the slower the cooling.
         step_size: neighbor proposal scale, shrinks with temperature.
-            (이웃 제안 폭 — 온도에 비례해 줄어든다.)
     """
     rng = np.random.default_rng(seed)
     low, high = bounds
@@ -60,7 +57,6 @@ def simulated_annealing(
             evals += 1
             delta = f_cand - f
             # Metropolis criterion: always accept improvement, sometimes accept worse.
-            # 메트로폴리스 기준 — 개선은 항상, 악화는 확률적으로 수용.
             if delta < 0 or rng.random() < np.exp(-delta / temperature):
                 x, f = candidate, f_cand
                 if f < best_f:

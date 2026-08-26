@@ -1,7 +1,4 @@
-"""Level 1 tests: objectives have correct optima; baselines find them.
-
-Level 1 검증 — 목적함수의 최적값과 기준선 탐색의 수렴.
-"""
+"""Level 1 tests: objectives have correct optima; baselines find them."""
 
 import numpy as np
 import pytest

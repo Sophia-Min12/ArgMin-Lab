@@ -1,6 +1,5 @@
 """Particle swarm optimization (global-best topology).
 
-입자 군집 최적화 (전역 최적 공유 토폴로지).
 v ← w·v + c1·r1·(pbest − x) + c2·r2·(gbest − x)
 """
 
@@ -34,9 +33,9 @@ def particle_swarm(
     """Minimize `func` with a standard global-best PSO.
 
     Args:
-        inertia: how much old velocity carries over (w). 관성 계수.
-        cognitive: pull toward each particle's own best (c1). 개인 기억 계수.
-        social: pull toward the swarm's best (c2). 군집 기억 계수.
+        inertia: how much old velocity carries over (w).
+        cognitive: pull toward each particle's own best (c1).
+        social: pull toward the swarm's best (c2).
         (0.72 / 1.49 constriction values follow Clerc & Kennedy 2002.)
     """
     rng = np.random.default_rng(seed)

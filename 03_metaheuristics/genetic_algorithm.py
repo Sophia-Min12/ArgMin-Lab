@@ -1,8 +1,5 @@
 """Real-coded genetic algorithm: tournament selection, BLX-α crossover,
 Gaussian mutation, and elitism.
-
-실수 인코딩 유전 알고리즘 — 토너먼트 선택, BLX-α 교차, 가우시안 변이,
-엘리트 보존.
 """
 
 from __future__ import annotations
@@ -24,7 +21,7 @@ class GAResult:
 def tournament_select(
     pop: np.ndarray, fitness: np.ndarray, k: int, rng: np.random.Generator
 ) -> np.ndarray:
-    """Pick the best of k random individuals. k개 중 최고를 고르는 토너먼트."""
+    """Pick the best of k random individuals."""
     idx = rng.integers(0, len(pop), size=k)
     return pop[idx[np.argmin(fitness[idx])]].copy()
 
@@ -32,10 +29,7 @@ def tournament_select(
 def blx_crossover(
     p1: np.ndarray, p2: np.ndarray, alpha: float, rng: np.random.Generator
 ) -> np.ndarray:
-    """BLX-α: child sampled uniformly from the parents' interval, widened by α.
-
-    부모 구간을 α만큼 확장한 범위에서 자식을 균일 표집 — 탐색성이 있는 교차.
-    """
+    """BLX-α: child sampled uniformly from the parents' interval, widened by α."""
     lo = np.minimum(p1, p2)
     hi = np.maximum(p1, p2)
     span = hi - lo
@@ -60,9 +54,7 @@ def genetic_algorithm(
     Args:
         elite: top-n individuals copied unchanged into the next generation,
             guaranteeing the best fitness never worsens.
-            (상위 n개는 그대로 다음 세대로 — 최고 적합도의 퇴보를 방지.)
         mutation_scale: Gaussian std as a fraction of the box width.
-            (변이 표준편차 — 탐색 범위 폭에 대한 비율.)
     """
     rng = np.random.default_rng(seed)
     low, high = bounds
@@ -80,7 +72,7 @@ def genetic_algorithm(
             p1 = tournament_select(pop, fitness, tournament_k, rng)
             p2 = tournament_select(pop, fitness, tournament_k, rng)
             child = blx_crossover(p1, p2, crossover_alpha, rng)
-            # Gaussian mutation, gene-wise. 유전자 단위 가우시안 변이.
+            # Gaussian mutation, gene-wise.
             mask = rng.random(dim) < mutation_rate
             child[mask] += rng.normal(0.0, mutation_scale * width, size=mask.sum())
             next_pop.append(np.clip(child, low, high))

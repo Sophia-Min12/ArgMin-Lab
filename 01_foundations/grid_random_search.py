@@ -1,7 +1,4 @@
-"""Grid search and random search — the two baselines every optimizer must beat.
-
-그리드 탐색과 랜덤 탐색 — 모든 최적화 기법이 이겨야 하는 두 기준선.
-"""
+"""Grid search and random search — the two baselines every optimizer must beat."""
 
 from __future__ import annotations
 
@@ -14,7 +11,7 @@ import numpy as np
 
 @dataclass
 class SearchResult:
-    """Best configuration found and its objective value. 탐색 결과."""
+    """Best configuration found and its objective value."""
 
     best_x: np.ndarray
     best_f: float
@@ -29,7 +26,6 @@ def grid_search(
 ) -> SearchResult:
     """Exhaustively evaluate a regular grid over the search box.
 
-    탐색 영역을 균일 격자로 나눠 전부 평가한다.
     Cost grows as points_per_dim ** dim — the curse of dimensionality.
     """
     low, high = bounds
@@ -51,10 +47,7 @@ def random_search(
     n_samples: int = 1000,
     seed: int | None = None,
 ) -> SearchResult:
-    """Evaluate uniformly random points; cost is independent of dimension.
-
-    균일 난수 표본을 평가한다 — 비용이 차원과 무관하다는 점이 그리드와의 차이.
-    """
+    """Evaluate uniformly random points; cost is independent of dimension."""
     rng = np.random.default_rng(seed)
     low, high = bounds
     best_x, best_f = None, np.inf

@@ -1,7 +1,4 @@
-"""Level 4 tests: minimax plays Tic-Tac-Toe perfectly.
-
-Level 4 검증 — 미니맥스의 완전 플레이.
-"""
+"""Level 4 tests: minimax plays Tic-Tac-Toe perfectly."""
 
 from minimax import State, minimax, self_play
 

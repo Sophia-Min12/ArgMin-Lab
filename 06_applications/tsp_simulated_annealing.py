@@ -1,6 +1,5 @@
 """Traveling Salesman Problem solved with simulated annealing + 2-opt moves.
 
-담금질 기법과 2-opt 이웃으로 푸는 외판원 문제(TSP).
 Here 𝒳 is the set of tours (permutations) — a *combinatorial* search space.
 """
 
@@ -12,16 +11,15 @@ import numpy as np
 
 
 def tour_length(cities: np.ndarray, tour: np.ndarray) -> float:
-    """Total closed-loop length of `tour`. 순회 경로의 총 길이 (출발점 복귀 포함)."""
+    """Total closed-loop length of `tour` (including the return leg)."""
     ordered = cities[tour]
     diffs = ordered - np.roll(ordered, -1, axis=0)
     return float(np.sum(np.sqrt(np.sum(diffs**2, axis=1))))
 
 
 def two_opt_neighbor(tour: np.ndarray, rng: np.random.Generator) -> np.ndarray:
-    """Reverse a random segment — the classic 2-opt move.
-
-    무작위 구간을 뒤집는 2-opt 이웃 — 교차하는 간선을 풀어준다.
+    """Reverse a random segment — the classic 2-opt move that untangles
+    crossing edges.
     """
     n = len(tour)
     i, j = sorted(rng.choice(n, size=2, replace=False))
@@ -48,8 +46,8 @@ def solve_tsp(
 ) -> TSPResult:
     """Anneal over tour space with Metropolis acceptance.
 
-    메트로폴리스 수용 기준으로 순회 공간을 담금질한다.
-    연속 공간 SA(Level 2)와 알고리즘 뼈대는 동일 — 이웃 정의만 바뀐다.
+    Same algorithmic skeleton as the continuous SA in Level 2 — only the
+    neighbor definition changes.
     """
     rng = np.random.default_rng(seed)
     n = len(cities)

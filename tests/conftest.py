@@ -1,4 +1,4 @@
-"""Make every level's modules importable from the tests. 테스트용 경로 설정."""
+"""Make every level's modules importable from the tests."""
 
 import sys
 from pathlib import Path

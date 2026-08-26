@@ -1,7 +1,4 @@
-"""Level 3 tests: population methods handle multimodal landscapes.
-
-Level 3 검증 — 개체군 기반 기법의 다봉 함수 성능.
-"""
+"""Level 3 tests: population methods handle multimodal landscapes."""
 
 from objective_functions import BENCHMARKS
 from genetic_algorithm import genetic_algorithm

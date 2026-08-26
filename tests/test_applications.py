@@ -1,7 +1,4 @@
-"""Level 6 tests: TSP annealing improves clearly over a random tour.
-
-Level 6 검증 — TSP 담금질이 무작위 순회보다 명확히 개선되는지.
-"""
+"""Level 6 tests: TSP annealing improves clearly over a random tour."""
 
 import numpy as np
 

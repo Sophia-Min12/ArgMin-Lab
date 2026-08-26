@@ -1,6 +1,5 @@
 """Minimax with alpha-beta pruning, demonstrated on Tic-Tac-Toe.
 
-틱택토로 시연하는 미니맥스 + 알파-베타 가지치기.
 MAX plays 'X' (wants +1), MIN plays 'O' (wants −1). Draw = 0.
 """
 
@@ -17,7 +16,7 @@ WIN_LINES = (
 
 @dataclass(frozen=True)
 class State:
-    """Immutable Tic-Tac-Toe position. 불변 틱택토 국면."""
+    """Immutable Tic-Tac-Toe position."""
 
     board: tuple[str, ...] = (" ",) * 9
     to_move: str = "X"
@@ -40,7 +39,7 @@ class State:
         return self.winner() is not None or " " not in self.board
 
     def utility(self) -> int:
-        """+1 if X won, −1 if O won, 0 otherwise. X 승리 +1, O 승리 −1."""
+        """+1 if X won, −1 if O won, 0 otherwise."""
         w = self.winner()
         return 1 if w == "X" else -1 if w == "O" else 0
 
@@ -55,10 +54,9 @@ def minimax(
 ) -> tuple[int, int | None]:
     """Return (value, best_move) under optimal play by both sides.
 
-    양측 최선 플레이를 가정한 (게임 값, 최선 수).
     Alpha-beta: alpha = best already guaranteed for MAX, beta = for MIN.
     A branch where alpha >= beta cannot influence the root — prune it.
-    (알파-베타: 결과에 영향을 줄 수 없는 가지는 잘라낸다 — 값은 동일.)
+    The returned value is identical to plain minimax.
     """
     if state.is_terminal():
         return state.utility(), None
@@ -86,10 +84,7 @@ def minimax(
 
 
 def self_play() -> State:
-    """Both sides play the minimax-optimal move until the game ends.
-
-    양쪽 모두 미니맥스 최적수를 두는 자가 대국.
-    """
+    """Both sides play the minimax-optimal move until the game ends."""
     state = State()
     while not state.is_terminal():
         _, move = minimax(state)

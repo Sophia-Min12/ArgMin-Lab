@@ -1,6 +1,5 @@
 """Run every implemented optimizer on the classic benchmarks and print a table.
 
-구현된 모든 최적화 기법을 고전 벤치마크 함수 위에서 실행해 표로 비교한다.
 Roughly equal evaluation budgets are used for a fair comparison.
 
 Usage: python benchmarks/compare_optimizers.py
@@ -61,7 +60,7 @@ def print_table(results: dict[str, dict[str, float]]) -> None:
             mark = "*" if np.isclose(value, best) else " "
             row += f"{value:>13.4f}{mark}"
         print(row)
-    print("\n* = best on that objective (dim=%d, seed=%d). 목적함수별 최고 성능." % (DIM, SEED))
+    print("\n* = best on that objective (dim=%d, seed=%d)." % (DIM, SEED))
 
 
 if __name__ == "__main__":

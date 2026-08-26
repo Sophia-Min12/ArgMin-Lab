@@ -1,6 +1,5 @@
 """Gradient descent with numerical differentiation and optional momentum.
 
-수치 미분과 (선택적) 모멘텀을 이용한 경사하강법.
 Update rule: x ← x − η∇F(x)
 """
 
@@ -15,10 +14,7 @@ import numpy as np
 def numerical_gradient(
     func: Callable[[np.ndarray], float], x: np.ndarray, eps: float = 1e-6
 ) -> np.ndarray:
-    """Central-difference gradient: (F(x+ε) − F(x−ε)) / 2ε per coordinate.
-
-    중심차분으로 좌표별 편미분을 근사한다.
-    """
+    """Central-difference gradient: (F(x+ε) − F(x−ε)) / 2ε per coordinate."""
     x = np.asarray(x, dtype=float)
     grad = np.zeros_like(x)
     for i in range(x.size):
@@ -30,7 +26,7 @@ def numerical_gradient(
 
 @dataclass
 class GDResult:
-    """Optimization trace. 최적화 궤적."""
+    """Optimization trace."""
 
     best_x: np.ndarray
     best_f: float
@@ -51,10 +47,9 @@ def gradient_descent(
 
     Args:
         learning_rate: step size η. Too large diverges, too small crawls.
-            (학습률 — 크면 발산, 작으면 굼벵이.)
-        momentum: velocity coefficient in [0, 1). 0 disables momentum.
-            (모멘텀 계수 — 골짜기에서 진동을 줄이고 가속한다.)
-        tol: stop when the gradient norm falls below this. (수렴 판정 기준.)
+        momentum: velocity coefficient in [0, 1). 0 disables momentum;
+            higher values damp oscillation in valleys and accelerate progress.
+        tol: stop when the gradient norm falls below this.
     """
     x = np.asarray(x0, dtype=float).copy()
     velocity = np.zeros_like(x)

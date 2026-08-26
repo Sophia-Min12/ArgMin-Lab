@@ -1,6 +1,5 @@
 """Continuous hill climbing with Gaussian neighbors and random restarts.
 
-가우시안 이웃 제안과 랜덤 재시작을 사용하는 연속 공간 언덕 오르기.
 (Here we descend — minimizing — but the classic name stays.)
 """
 
@@ -30,8 +29,8 @@ def hill_climb_once(
 ) -> tuple[np.ndarray, float, int]:
     """Greedy walk: accept a Gaussian neighbor only if it improves.
 
-    개선될 때만 이웃해를 받아들이는 탐욕적 걷기. `max_stall`번 연속
-    실패하면 지역 최적점에 도달했다고 보고 멈춘다.
+    Stops after `max_stall` consecutive failures, taking that as having
+    reached a local optimum.
     """
     low, high = bounds
     x, f = x0.copy(), func(x0)
@@ -58,8 +57,8 @@ def hill_climbing(
 ) -> HCResult:
     """Random-restart hill climbing: run greedy walks from random starts.
 
-    랜덤 재시작 언덕 오르기 — 서로 다른 시작점에서 여러 번 걸어
-    가장 좋은 결과를 취한다. 재시작이 지역 최적점 탈출 수단이다.
+    Restarts are the escape mechanism — walk from many different starting
+    points and keep the best result.
     """
     rng = np.random.default_rng(seed)
     low, high = bounds

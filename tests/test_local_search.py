@@ -1,7 +1,4 @@
-"""Level 2 tests: local search escapes traps well enough to near the optimum.
-
-Level 2 검증 — 지역 탐색이 최적점 근처까지 도달하는지.
-"""
+"""Level 2 tests: local search escapes traps well enough to near the optimum."""
 
 from objective_functions import BENCHMARKS
 from hill_climbing import hill_climbing

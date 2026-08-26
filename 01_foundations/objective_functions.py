@@ -1,6 +1,5 @@
 """Classic benchmark objective functions for optimization.
 
-최적화 벤치마크에 널리 쓰이는 고전 목적함수 모음.
 Every function is written to be minimized: X* = arg min F(X').
 """
 
@@ -13,27 +12,23 @@ import numpy as np
 
 
 def sphere(x: np.ndarray) -> float:
-    """Sphere: F(x) = Σ xᵢ².  Convex, unimodal. Global minimum 0 at origin.
-
-    구면 함수 — 볼록하고 최적점이 하나뿐인 가장 쉬운 기준 함수.
-    """
+    """Sphere: F(x) = Σ xᵢ².  Convex, unimodal. Global minimum 0 at origin."""
     x = np.asarray(x, dtype=float)
     return float(np.sum(x**2))
 
 
 def rosenbrock(x: np.ndarray) -> float:
-    """Rosenbrock: narrow curved valley. Global minimum 0 at (1, ..., 1).
+    """Rosenbrock: narrow curved valley where gradient methods struggle.
 
-    로젠브록 — 좁고 휘어진 골짜기 때문에 경사 기반 방법이 고전하는 함수.
+    Global minimum 0 at (1, ..., 1).
     """
     x = np.asarray(x, dtype=float)
     return float(np.sum(100.0 * (x[1:] - x[:-1] ** 2) ** 2 + (1.0 - x[:-1]) ** 2))
 
 
 def rastrigin(x: np.ndarray) -> float:
-    """Rastrigin: highly multimodal. Global minimum 0 at origin.
+    """Rastrigin: highly multimodal — a grid of local optima. Minimum 0 at origin.
 
-    라스트리긴 — 지역 최적점이 격자처럼 가득한 다봉(multimodal) 함수.
     Local search gets trapped; metaheuristics shine here.
     """
     x = np.asarray(x, dtype=float)
@@ -42,9 +37,8 @@ def rastrigin(x: np.ndarray) -> float:
 
 
 def ackley(x: np.ndarray) -> float:
-    """Ackley: nearly flat outer region, deep hole at origin. Minimum 0 at origin.
-
-    애클리 — 바깥은 평평하고 원점에만 깊은 구멍이 있어 탐색·활용 균형을 시험한다.
+    """Ackley: nearly flat outer region, deep hole at origin — a test of the
+    exploration/exploitation balance. Minimum 0 at origin.
     """
     x = np.asarray(x, dtype=float)
     n = x.size
@@ -56,10 +50,7 @@ def ackley(x: np.ndarray) -> float:
 
 @dataclass(frozen=True)
 class Benchmark:
-    """An objective together with its search bounds and known optimum.
-
-    목적함수 + 탐색 범위 + 알려진 최적해를 한데 묶은 벤치마크 정의.
-    """
+    """An objective together with its search bounds and known optimum."""
 
     name: str
     func: Callable[[np.ndarray], float]
