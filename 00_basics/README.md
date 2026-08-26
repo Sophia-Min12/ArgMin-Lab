@@ -27,7 +27,7 @@ $$X^{\star} = \underset{X' \in \mathcal{X}}{\arg\min}\, F\left(X'\right)$$
 ## Where you meet it in practice
 
 - **Machine learning training**
-  $\theta^{\star} = \arg\min_{\theta} \operatorname{Loss}(\theta)$ — what we want is not the loss value but the **optimal weights** $\theta^{\star}$.
+  $\theta^{\star} = \arg\min_{\theta} \mathrm{Loss}(\theta)$ — what we want is not the loss value but the **optimal weights** $\theta^{\star}$.
 - **TSP** ([`06_applications`](../06_applications/)) — we want not the shortest distance (min) but the **shortest tour itself** (arg min).
 - **Every optimizer in this repo** returns both: `best_f` is the *min*, `best_x` is the *arg min*.
 
