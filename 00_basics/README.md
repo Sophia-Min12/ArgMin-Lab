@@ -1,4 +1,4 @@
-# Level 0 · Basics — What does "arg min" mean
+# Level 0 · Basics — What does "arg min" mean?
 
 > This repository is named **ArgMin-Lab**. Before any algorithm, understand the two words in the name.
 
