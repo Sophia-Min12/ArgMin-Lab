@@ -14,10 +14,6 @@
 - **Alpha-beta pruning** returns the *same* answer while skipping branches that cannot change it — often reducing O(bᵐ) toward O(b^(m/2)).
 - **Perfect play in Tic-Tac-Toe is a draw** — the test suite proves it by self-play.
 
-## Why this matters to me
-
-Ever since I was young, I enjoyed learning about things that held completely opposite information — **Min VS. Max** is that idea, formalized.
-
 ## Reference
 
 - AIMA 3rd ed., **Ch. 5 Adversarial Search** (retitled *Adversarial Search and Games* in the 4th ed.)
