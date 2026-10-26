@@ -9,6 +9,7 @@ for sub in (
     "02_local_search",
     "03_metaheuristics",
     "04_adversarial_search",
+    "05_modern_topics",
     "06_applications",
 ):
     sys.path.append(str(ROOT / sub))

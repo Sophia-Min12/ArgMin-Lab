@@ -18,8 +18,8 @@ $$X^{\star} = \underset{X' \in \mathcal{X}}{\arg\min} F\left(X'\right)$$
 | 2 | [`02_local_search`](02_local_search/) | Hill climbing, simulated annealing | ✅ |
 | 3 | [`03_metaheuristics`](03_metaheuristics/) | Genetic algorithm, particle swarm optimization | ✅ |
 | 4 | [`04_adversarial_search`](04_adversarial_search/) | Minimax, alpha-beta pruning — **Min VS. Max** | ✅ |
-| 5 | [`05_modern_topics`](05_modern_topics/) | Bayesian optimization, CMA-ES, multi-objective (NSGA-II) | 🚧 |
-| 6 | [`06_applications`](06_applications/) | TSP, scheduling, LLM/RAG hyperparameter tuning | 🚧 |
+| 5 | [`05_modern_topics`](05_modern_topics/) | Bayesian optimization, CMA-ES, multi-objective (NSGA-II) | ✅ |
+| 6 | [`06_applications`](06_applications/) | TSP, exam scheduling, RAG hyperparameter tuning | ✅ |
 
 ✅ implemented & tested &nbsp;·&nbsp; 🚧 in progress &nbsp;·&nbsp; 📝 planned
 
@@ -54,6 +54,7 @@ python benchmarks/compare_optimizers.py
 
 - Stuart Russell & Peter Norvig, *Artificial Intelligence: A Modern Approach* (3rd ed.)
   — esp. **Ch. 4 Beyond Classical Search** and **Ch. 5 Adversarial Search**
+- Level 5 papers — Hansen's CMA-ES tutorial, Deb et al.'s NSGA-II, and the Bayesian optimization review by Shahriari et al. (full list in [`05_modern_topics`](05_modern_topics/README.md#reference))
 
 ## License
 

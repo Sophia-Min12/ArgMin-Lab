@@ -1,6 +1,9 @@
 """Run every implemented optimizer on the classic benchmarks and print a table.
 
 Roughly equal evaluation budgets are used for a fair comparison.
+Bayesian optimization (Level 5) is left out on purpose: it is built for budgets
+of tens of evaluations, and its GP cost grows cubically with the number of
+evaluations, so a 12,000-evaluation race is not what it is for.
 
 Usage: python benchmarks/compare_optimizers.py
 """
@@ -13,7 +16,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-for sub in ("01_foundations", "02_local_search", "03_metaheuristics"):
+for sub in ("01_foundations", "02_local_search", "03_metaheuristics", "05_modern_topics"):
     sys.path.append(str(ROOT / sub))
 
 from objective_functions import BENCHMARKS  # noqa: E402
@@ -23,6 +26,7 @@ from hill_climbing import hill_climbing  # noqa: E402
 from simulated_annealing import simulated_annealing  # noqa: E402
 from genetic_algorithm import genetic_algorithm  # noqa: E402
 from particle_swarm import particle_swarm  # noqa: E402
+from cma_es import cma_es  # noqa: E402
 
 DIM = 5
 SEED = 0
@@ -42,6 +46,7 @@ def run_all() -> dict[str, dict[str, float]]:
             "simulated annealing": simulated_annealing(f, bounds, DIM, seed=SEED).best_f,
             "genetic algorithm": genetic_algorithm(f, bounds, DIM, seed=SEED).best_f,
             "particle swarm": particle_swarm(f, bounds, DIM, seed=SEED).best_f,
+            "CMA-ES": cma_es(f, bounds, DIM, max_evals=12000, seed=SEED).best_f,
         }
     return results
 
